@@ -1,0 +1,434 @@
+
+
+/* Nguyên tắc làm việc:
+1. Vị trí 
+2. Kích thước
+3. Màu sắc
+4. Kiểu chữ */
+:root {                  /* thiết lập phần tử gốc cho trang web */
+    --primary-color : #ee4d2d;
+    --white-color : #fff;
+    --black-color : #000;
+    --text-color: #333;
+
+    --header-height: 120px;
+    --navbar-height: 34px;
+    --header__with-search-height: calc(var(--header-height) - var(--navbar-height));
+}
+* {
+    /* inherit là kế thừa từ thẻ chứa nó */
+    box-sizing: inherit; /*giúp đơn giản hóa quy trình thiết kế và 
+                           tăng tính nhất quán của giao diện trang web. */
+}
+
+html {
+    font-size: 62.5%; 
+    /* phông chữ bằng 10px */
+    line-height: 1.6rem;
+    /* chiều cao chữ bằng 16px */
+    box-sizing: border-box;
+}
+
+
+.roboto-light {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+.roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+  
+.roboto-medium {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+  
+.roboto-bold {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+} 
+body {
+    height: 720px;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/* phông chữ trên web  */
+
+.grid {
+    width: 1200px;
+    max-width: 100%;
+    /* nếu màn hình trên 1200px thì tự động giảm xuống còn 1200px */
+    margin: 0 auto;
+}
+
+.grid__full-width {
+    width: 100%;
+}
+/* khi không thích dùng grid thì dùng grid__full */
+
+.grid__row {
+    display: flex;
+    /* những thẻ mà có class này sẽ cùng nằm trên 1 hàng ngang */
+    flex-wrap: wrap;
+    /* các thẻ sẽ tự động xuống dòng nếu màn hình nhỏ lại */
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+.grid__column-2 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 16.6667%;
+}
+
+.grid__column-10 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 83.3333%;
+}
+
+.grid__column-10-2 {
+    width: 20%;
+    padding-left: 5px;
+    padding-right: 5px;
+   
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes growth {
+    from {
+        transform: scale(var(--growth-from));
+    }
+    to {
+        transform: scale(var(--growth-to));
+    }    
+}
+
+/* Xây base modal  */
+
+.modal {
+    position: fixed;
+    /* fixed áp dụng cho modal */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    animation: fadeIn linear 0.1s;
+}
+
+.modal__overlay {
+    /* lớp phủ */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    /* lớp phủ nhìn xuyên được thì rgba */
+}
+
+.modal__body {
+    --growth-from : 0.7;
+    --growth-to: 1;
+    width: 500px;
+    border-radius: 2px;
+    background-color: #fff;
+    margin: auto;
+    position: relative;
+    animation: growth linear 0.1s;
+   
+}
+
+
+
+.modal__form {
+   
+}
+
+.modal__form-container {
+    padding: 0 32px;
+}
+
+.form__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    
+}
+
+.form--heading {
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: var(--black-color);
+}
+
+.form__btn {
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: #ee4d2d;
+    cursor: pointer;
+}
+
+.form__form {
+    margin-top: 16px;
+}
+
+.form__group {
+    margin-bottom: 20px;
+}
+
+.form__input {
+    width: 100%;
+    
+    height: 40px;
+    padding: 0 12px;
+    font-size: 1.4rem;
+    border: 1px solid #dbdbdb;
+    border-radius: 2px;
+    outline: none;
+}
+
+.form__input:focus {
+    border-color: #737373;
+}
+
+.form__aside {
+    margin-top: 16px;
+}
+
+.form__policy-text {
+    text-decoration: none;
+    text-align: center;
+    padding: 0 12px;
+}
+
+.form__policy-link {
+    text-decoration: none;
+    color: #ee4d2d;
+   
+}
+
+.form__controls {
+        padding-top: 80px;
+}
+
+.btn {
+    min-width: 124px;
+    height: 34px;
+    text-decoration: none;
+    border: none;
+    border-radius: 2px;
+    font-size: 1.5rem;
+    padding: 0;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.6rem;
+    background-color: #fff;
+}
+
+.btn.btn-normal:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.btn.btn--primary {
+    background-color: #ee4d2d;
+    color: #fff;
+}
+
+.form__socials {
+   background-color: #99999963;
+   padding: 12px 36px;
+   display: flex;
+   justify-content: space-between;
+   font-size: 12px;
+   margin-top: 22px;
+}
+
+.btn--with-icon {
+    font-size: 1.2rem;
+    
+}
+
+.btn--with-icon-face {
+    color: var(--white-color);
+    background-color: #3a5a98;
+}
+
+.form__text-socials {
+    margin: 0 36px;
+}
+.btn--with-icon-gg {
+    color: #666;
+    background-color: var(--white-color);
+}
+
+.fa-brands {
+    margin-left: 16px;
+    
+}
+
+.phantrang {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+.phantrang-items {
+    margin: 0 16px;
+}
+
+.phantrang-items-active .phantrang-items-link {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.phantrang-items-active .phantrang-items-link:hover {
+    background-color: #ed5c3f;
+}
+
+.phantrang-items-link {
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    color: #939393;
+    font-size: 2rem;
+    min-width: 40px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 2px;
+    font-weight: 300;
+}
+
+.home__product--phantrang {
+    margin: 48px 0 32px;
+}
+
+
+
+/* footer */
+
+.footer {
+    border-top: 4px solid var(--primary-color);
+    padding-top: 16px;
+}
+
+.footer__header {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    color: #333;
+    font-weight: 400;
+}
+
+.footer__list {
+    padding-left: 0;
+    list-style: none;
+}
+
+.footer__items-link {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #737373;
+    padding: 3px 0;
+    display: flex;
+    align-items: center;
+
+}
+
+.footer__items-link:hover {
+    color: var(--primary-color);
+}
+
+.footer__items-icon {
+    font-size: 1.6rem;
+    margin: 0 8px 0 0 ;
+}
+
+.footer__dowload {
+    display: flex;
+}
+
+.footer__dowload-qr {
+    width: 80px;
+    object-fit: contain;
+    /* object dùng cho img */
+    border: 1px solid #5553 ;
+}
+
+.footer__dowload-apps {
+    display: flex;
+    margin-left: 18px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.footer__dowload-app-img {
+    height: 16px;
+    margin-bottom: 8px;
+}
+
+.footer__dowload-apps-link1 {
+    text-decoration: none;
+    color: transparent;
+}
+
+.footer__bottom {
+    background-color: #f5f5f5;
+    padding: 12px 0;
+    margin-top: 8px;
+}
+
+.footer__text {
+    margin: 0;
+    font-size: 1.4rem;
+    text-align: center;
+    color: #737373;
+}
+
+.hidden {
+    display: none;
+}
+.invalid .form-message{
+    color: #f33a58;
+}
+
+.invalid .form__input {
+    border-color: #f33a58;
+}
+ 
+
+.form-message {
+    padding: 0 4px;
+    margin-top: 8px;
+}
+
+
+.form__group-l1 {
+    display: inline-flex;
+    justify-content: space-between;
+    font-size: 1.4rem;
+    color: #666;
+    padding: 0 4px;
+}
+
+.form__controls-div {
+    padding-left: 30px;
+
+}
+
+
